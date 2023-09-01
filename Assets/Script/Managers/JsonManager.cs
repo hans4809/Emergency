@@ -6,7 +6,7 @@ using System.Text;
 
 public class JsonManager
 {
-    public void SaveJson(SaveDataClass saveData) // µ¥ÀÌÅÍ¸¦ ÀúÀåÇÏ´Â ÇÔ¼ö
+    public void SaveJson(SaveDataClass saveData) // ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
     {
         string jsonText;
         string savePath = Application.dataPath + "/Data/GameData.json";

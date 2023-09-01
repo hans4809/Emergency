@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
-    JsonManager jsonManager; // json¿¡¼­ °ªÀ» ÀĞ¾î¿À°Å³ª ÀúÀåÇÏ´Â JsonManager
-    public SaveDataClass Data; // µ¥ÀÌÅÍ¸¦ ÀúÀåÇÏ´Â Çü½ÄÀÎ SaveDataClass
-
+    JsonManager jsonManager; // jsonï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ğ¾ï¿½ï¿½ï¿½Å³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ JsonManager
+    public SaveDataClass Data; // ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ SaveDataClass
+    public SoundData SoundData;
     void Awake()
     {
         Data = new SaveDataClass();
@@ -16,12 +16,12 @@ public class DataManager : MonoBehaviour
 
         Load();
     }
-    public void Save() // saveData¿¡ ±â·ÏµÈ µ¥ÀÌÅÍµéÀ» json¿¡ ÀúÀåÇÑ´Ù
+    public void Save() // saveDataï¿½ï¿½ ï¿½ï¿½Ïµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ jsonï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½
     {
         jsonManager.SaveJson(Data);
     }
 
-    public void Load() // json¿¡ ±â·ÏµÅÀÖ´Â µ¥ÀÌÅÍµéÀ» ºÒ·¯¿Â´Ù
+    public void Load() // jsonï¿½ï¿½ ï¿½ï¿½Ïµï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½Â´ï¿½
     {
         Data = jsonManager.LoadSaveData();
     }

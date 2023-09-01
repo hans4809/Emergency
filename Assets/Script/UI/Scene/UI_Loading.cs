@@ -26,7 +26,7 @@ public class UI_Loading : UI_Scene
     IEnumerator LoadScene()
     {
         yield return null;
-        AsyncOperation op = Managers.Scene.LoadSceneAsync(Define.Scene.GameScene1);
+        AsyncOperation op = Managers.Scene.LoadSceneAsync(Define.Scene.InGame);
         op.allowSceneActivation = false;
         float timer = 0.0f;
         while (!op.isDone)

@@ -36,6 +36,13 @@ public class UI_Setting : UI_Popup
     }
     public void BGMVolume(PointerEventData data)
     {
+        Managers.Data.SoundData.bgmVolume = BGMSlider.value;
+        if (Managers.Data.SoundData.bgmVolume <= -40f)
+        {
+            Managers.Sound.audioMixer.SetFloat("BGM", -80);
+        }
+        Managers.Sound.audioMixer.SetFloat("BGM", Mathf.Log10(BGMSlider.value) * 20);
+        Managers.Sound._audioSources[(int)Define.Sound.BGM].volume = BGMSlider.value;
         //DataManager.singleTon.saveData._bgmVolume = _bgmSlider.value;
         //DataManager.singleTon.jsonManager.Save<DataDefine.SaveData>(DataManager.singleTon.saveData);
         //if (DataManager.singleTon.saveData._bgmVolume <= -40f)
@@ -47,6 +54,13 @@ public class UI_Setting : UI_Popup
     }
     public void SFXVolume(PointerEventData data)
     {
+        Managers.Data.SoundData.sfxVolume = SFXSlider.value;
+        if (Managers.Data.SoundData.sfxVolume <= -40f)
+        {
+            Managers.Sound.audioMixer.SetFloat("BGM", -80);
+        }
+        Managers.Sound.audioMixer.SetFloat("BGM", Mathf.Log10(SFXSlider.value) * 20);
+        Managers.Sound._audioSources[(int)Define.Sound.SFX].volume = SFXSlider.value;
         //DataManager.singleTon.saveData._sfxVolume = _sfxSlider.value;
         //DataManager.singleTon.jsonManager.Save<DataDefine.SaveData>(DataManager.singleTon.saveData);
         //if (DataManager.singleTon.saveData._bgmVolume <= -40f)
