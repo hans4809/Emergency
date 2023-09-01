@@ -10,7 +10,8 @@ public class UI_Stage : UI_Popup
     {
         Stage1,
         Stage2,
-        Stage3
+        Stage3,
+        Back
     }
     public enum Images
     {
@@ -30,13 +31,12 @@ public class UI_Stage : UI_Popup
         GetButton((int)Buttons.Stage1).gameObject.AddUIEvent(Stage1);
         GetButton((int)Buttons.Stage2).gameObject.AddUIEvent(Stage2);
         GetButton((int)Buttons.Stage3).gameObject.AddUIEvent(Stage3);
-        Test = GetImage((int)Images.Test);
+        GetButton((int)Buttons.Back).gameObject.AddUIEvent(Back);
     }
     private void Stage1(PointerEventData data)
     {
         DataManager.Single.Data.InGameData.Level = 1;
         Managers.UI.ShowPopUpUI<UI_Loading>();
-
     }
     private void Stage2(PointerEventData data)
     {
@@ -48,7 +48,10 @@ public class UI_Stage : UI_Popup
         DataManager.Single.Data.InGameData.Level = 3;
         Managers.UI.ShowPopUpUI<UI_Loading>();
     }
-
+    private void Back(PointerEventData data)
+    {
+        ClosePopUPUI();
+    }
     // Update is called once per frame
     void Update()
     {
