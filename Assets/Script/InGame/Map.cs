@@ -18,6 +18,9 @@ public class Map : MonoBehaviour
     List<Sprite> _enemySpriteList;
 
     [SerializeField]
+    List<Sprite> _mapSpriteList;
+
+    [SerializeField]
     List<GameObject> _enemyList;
 
     GameObject player;
@@ -61,6 +64,7 @@ public class Map : MonoBehaviour
         }
         MapMake();
         action += PlayerYCheck;
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _mapSpriteList[DataManager.Single.Data.InGameData.Level - 1];
     }
 
     Action action;

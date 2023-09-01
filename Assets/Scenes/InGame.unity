@@ -793,6 +793,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 65c05afa3198a484a998a6a5a40c2054, type: 3}
   - {fileID: 21300000, guid: 5ab6e2a940aa99743a93015bcb55e9f6, type: 3}
   - {fileID: 21300000, guid: 45be90d851fd7e0419d4f1d78b08865b, type: 3}
+  _mapSpriteList:
+  - {fileID: 21300000, guid: 310afe0c55a36d646b42a28203910362, type: 3}
+  - {fileID: 21300000, guid: 459043495a15f794ab52dc66bac8f729, type: 3}
+  - {fileID: 21300000, guid: cbc9e3c80a3202b478903f606ec70209, type: 3}
   _enemyList: []
 --- !u!1 &1299222912
 GameObject:
