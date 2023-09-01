@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     SpriteRenderer _renderer;
     Animator _animator;
     UI_Clear UI_Clear;
+    UI_InGame UI_InGame;
 
     GameObject _leftDoor;
     GameObject _rightDoor;
@@ -91,6 +92,7 @@ public class Player : MonoBehaviour
         _panel = GameObject.Find("UI_Joystick").transform.GetChild(1).gameObject;
         PlayerAction += CameraSet;
         PlayerAction += SortPlayer;
+        UI_InGame = FindObjectOfType<UI_InGame>();
     }
 
     void Update()
@@ -108,10 +110,26 @@ public class Player : MonoBehaviour
         {
             if(UI_Clear == null)
             {
+<<<<<<< Updated upstream
                 DataManager.Single.Data.InGameData.IsClear = true;
                 _panel.SetActive(true);
 
                 StartCoroutine(playerMove());
+=======
+                switch (DataManager.Single.Data.InGameData.Level)
+                {
+                    case 1:
+                        DataManager.Single.Data.InGameData.Score1 = UI_InGame.currentTime;
+                        break;
+                    case 2:
+                        DataManager.Single.Data.InGameData.Score2 = UI_InGame.currentTime;
+                        break;
+                    case 3:
+                        DataManager.Single.Data.InGameData.Score3 = UI_InGame.currentTime;
+                        break;
+                }
+                DataManager.Single.Save();
+>>>>>>> Stashed changes
                 Managers.Sound.Stop(Managers.Sound._audioSources[(int)Define.Sound.BGM]);
                 Managers.Sound.Play("Sounds/BGM/GameClear", Define.Sound.BGM);
             }
