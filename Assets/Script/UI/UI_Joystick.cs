@@ -33,7 +33,7 @@ public class UI_Joystick : UI_Scene
 
         player = GameObject.Find("Player").GetOrAddComponent<Player>();
 
-        Managers.Data.Data.InGameData.JoysticSize = 2;
+        DataManager.Single.Data.InGameData.JoysticSize = 2;
         SetJoystickSize();
     }
 
@@ -80,8 +80,8 @@ public class UI_Joystick : UI_Scene
 
     private void SetJoystickSize()
     {
-        Debug.Log(Managers.Data.Data.InGameData.JoysticSize);
-        GetButton((int)Buttons.joystick).transform.parent.localScale = new Vector3(Managers.Data.Data.InGameData.JoysticSize, Managers.Data.Data.InGameData.JoysticSize, 1);
+        Debug.Log(DataManager.Single.Data.InGameData.JoysticSize);
+        GetButton((int)Buttons.joystick).transform.parent.localScale = new Vector3(DataManager.Single.Data.InGameData.JoysticSize, DataManager.Single.Data.InGameData.JoysticSize, 1);
     }
 
     // Update is called once per frame
