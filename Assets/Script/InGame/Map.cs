@@ -76,7 +76,7 @@ public class Map : MonoBehaviour
 
     void PlayerYCheck()
     {
-        if (player.transform.position.y > _yInterval * cnt)
+        if ((player.transform.position.y > _yInterval * cnt) && (player.transform.position.y < 200))
         {
             int num = UnityEngine.Random.Range(0, 7);
             if(num == 0)
