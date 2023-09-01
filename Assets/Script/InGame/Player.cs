@@ -117,17 +117,27 @@ public class Player : MonoBehaviour
                 switch (DataManager.Single.Data.InGameData.Level)
                 {
                     case 1:
-                        DataManager.Single.Data.InGameData.Score1 = UI_InGame.currentTime;
+                        if(DataManager.Single.Data.InGameData.Score1 > UI_InGame.currentTime)
+                        {
+                            DataManager.Single.Data.InGameData.Score1 = UI_InGame.currentTime;
+                        }
                         break;
                     case 2:
-                        DataManager.Single.Data.InGameData.Score2 = UI_InGame.currentTime;
+                        if (DataManager.Single.Data.InGameData.Score2 > UI_InGame.currentTime)
+                        {
+                            DataManager.Single.Data.InGameData.Score2 = UI_InGame.currentTime;
+                        }
                         break;
                     case 3:
-                        DataManager.Single.Data.InGameData.Score3 = UI_InGame.currentTime;
+                        if (DataManager.Single.Data.InGameData.Score3 > UI_InGame.currentTime)
+                        {
+                            DataManager.Single.Data.InGameData.Score3 = UI_InGame.currentTime;
+                        }
                         break;
                 }
                 DataManager.Single.Save();
-                Managers.Sound.Play("Sounds/SFX/GameClear", Define.Sound.SFX);
+                Managers.Sound.Stop(Managers.Sound._audioSources[(int)Define.Sound.BGM]);
+                Managers.Sound.Play("Sounds/SFX/GameClear_Edit", Define.Sound.BGM);
             }
         }
     }

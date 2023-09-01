@@ -78,24 +78,33 @@ public class UI_InGame : UI_Scene
                 switch (DataManager.Single.Data.InGameData.Level)
                 {
                     case 1:
-                        DataManager.Single.Data.InGameData.Score1 = 60;
+                        if(DataManager.Single.Data.InGameData.Score1 > 60)
+                        {
+                            DataManager.Single.Data.InGameData.Score1 = 60;
+                        }
                         break;
                     case 2:
-                        DataManager.Single.Data.InGameData.Score2 = 60;
+                        if (DataManager.Single.Data.InGameData.Score2 > 60)
+                        {
+                            DataManager.Single.Data.InGameData.Score2 = 60;
+                        }
                         break;
                     case 3:
-                        DataManager.Single.Data.InGameData.Score3 = 60;
+                        if (DataManager.Single.Data.InGameData.Score3 > 60)
+                        {
+                            DataManager.Single.Data.InGameData.Score3 = 60;
+                        }
                         break;
                 }
                 DataManager.Single.Save();
                 Managers.Sound.Stop(Managers.Sound._audioSources[(int)Define.Sound.BGM]);
-                Managers.Sound.Play("Sounds/SFX/GameOver");
+                Managers.Sound.Play("Sounds/SFX/GameOver_Edit");
                 uI_Ending = Managers.UI.ShowPopUpUI<UI_Ending>();
             }
         }
         if (currentTime >= 50)
         {
-            Managers.Sound.Play("Sounds/SFX/TimeOut10");
+            Managers.Sound.Play("Sounds/SFX/TimeOut10_Edit");
         }
         Timer.fillAmount = currentTime / 60;
     }
