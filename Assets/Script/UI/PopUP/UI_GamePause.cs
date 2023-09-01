@@ -44,11 +44,14 @@ public class UI_GamePause : UI_Popup
         ClosePopUPUI();
     }
     public void QuitClicked(PointerEventData eventData) 
-    { 
-        ClosePopUPUI();
+    {
+        Time.timeScale = 1;
+        Managers.Data.GameToSelect = true;
+        Managers.Scene.LoadScene(Define.Scene.Main);
     }
     public void MainClicked(PointerEventData eventData)
     {
+        Time.timeScale = 1;
         Managers.Scene.LoadScene(Define.Scene.Main);
     }
     public void BGMVolume(PointerEventData data)

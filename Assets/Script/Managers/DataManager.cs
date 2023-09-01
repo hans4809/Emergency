@@ -9,6 +9,8 @@ public class DataManager : MonoBehaviour
     JsonManager jsonManager; // json���� ���� �о���ų� �����ϴ� JsonManager
     public SaveDataClass Data; // �����͸� �����ϴ� ������ SaveDataClass
     public SoundData SoundData;
+    public UIData UIData;
+    public bool GameToSelect;
     void Awake()
     {
         Data = new SaveDataClass();
@@ -32,4 +34,9 @@ public class DataManager : MonoBehaviour
     {
         Data = jsonManager.LoadSaveData();
     }
+}
+
+public class UIData
+{
+    public bool GameToSelect;
 }
