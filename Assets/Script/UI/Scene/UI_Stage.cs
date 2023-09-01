@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_Stage : UI_Scene
+public class UI_Stage : UI_Popup
 {
     public enum Buttons
     {
@@ -28,18 +28,18 @@ public class UI_Stage : UI_Scene
     private void Stage1(PointerEventData data)
     {
         Managers.Data.Data.InGameData.Level = 1;
-        Managers.UI.ShowSceneUI<UI_Loading>();
+        Managers.UI.ShowPopUpUI<UI_Loading>();
 
     }
     private void Stage2(PointerEventData data)
     {
         Managers.Data.Data.InGameData.Level = 2;
-        Managers.UI.ShowSceneUI<UI_Loading>();
+        Managers.UI.ShowPopUpUI<UI_Loading>();
     }
     private void Stage3(PointerEventData data)
     {
         Managers.Data.Data.InGameData.Level = 3;
-        Managers.UI.ShowSceneUI<UI_Loading>();
+        Managers.UI.ShowPopUpUI<UI_Loading>();
     }
     // Update is called once per frame
     void Update()

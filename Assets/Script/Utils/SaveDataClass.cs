@@ -22,17 +22,15 @@ public class SaveDataClass
 
 public class SoundData
 {
-    public float bgmVolume;
-    public float sfxVolume;
+    public float masterVolume;
     public SoundData()
     {
-        this.bgmVolume = 0.5f;
-        this.sfxVolume = 0.5f;
+        this.masterVolume = 0.5f;
     }
-    public SoundData(float bgmVolume, float sfxVolume)
+    public SoundData(float masterVolume)
     {
-        this.bgmVolume = bgmVolume;
-        this.sfxVolume = sfxVolume;
+        this.masterVolume = masterVolume;
+
     }
 }
 

@@ -20,7 +20,7 @@ public class DataManager : MonoBehaviour
     {
         Data = new SaveDataClass();
         jsonManager = new JsonManager();
-        SoundData = new SoundData(0.5f, 0.5f);
+        SoundData = new SoundData(0.5f);
         Load();
     }
     public void Save() // saveData�� ��ϵ� �����͵��� json�� �����Ѵ�

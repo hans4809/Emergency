@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class UI_Loading : UI_Scene
+public class UI_Loading : UI_Popup
 {
     [SerializeField] Image progressBar;
     public enum Images
