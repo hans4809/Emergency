@@ -22,7 +22,7 @@ public class UI_Joystick : UI_Scene
 
     public enum Images
     {
-        joyStickBG
+        joystickBG
     }
 
     // Start is called before the first frame update
@@ -34,21 +34,19 @@ public class UI_Joystick : UI_Scene
     {
         base.Init();
         Bind<Button>(typeof(Buttons));
+        Bind<Image>(typeof(Images));
         GetButton((int)Buttons.joystick).gameObject.AddUIEvent(StickClickStart, Define.UIEvent.PointerDown);
         GetButton((int)Buttons.joystick).gameObject.AddUIEvent(StickClickEnd, Define.UIEvent.PointerUP);
         GetButton((int)Buttons.joystick).gameObject.AddUIEvent(Drag, Define.UIEvent.Drag);
 
         player = GameObject.Find("Player").GetOrAddComponent<Player>();
-
-        DataManager.Single.Data.InGameData.JoysticSize = 2;
-        SetJoystickSize();
     }
 
     private void StickClickStart(PointerEventData data)
     {
         mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
-            Input.mousePosition.y, -Input.mousePosition.z));
-        mousePos.z = 0;
+            Input.mousePosition.y, Input.mousePosition.z));
+        mousePos.z = 90;
         GetButton((int)Buttons.joystick).gameObject.transform.position = mousePos;
 
         SetSpeedAndDirection();
@@ -68,8 +66,8 @@ public class UI_Joystick : UI_Scene
     private void Drag(PointerEventData data)
     {
         mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
-            Input.mousePosition.y, -Input.mousePosition.z));
-        mousePos.z = 0;
+            Input.mousePosition.y, Input.mousePosition.z));
+        mousePos.z = 90;
         GetButton((int)Buttons.joystick).gameObject.transform.position = mousePos;
 
         SetSpeedAndDirection();
@@ -77,20 +75,23 @@ public class UI_Joystick : UI_Scene
 
     private void SetSpeedAndDirection()
     {
-        direction = GetButton((int)Buttons.joystick).gameObject.transform.position - GetImage((int)Images.joyStickBG).transform.position;
-        direction.z = 0;
-        distance = Vector3.Distance(GetButton((int)Buttons.joystick).gameObject.transform.position, GetImage((int)Images.joyStickBG).transform.position);
+        direction = new Vector3(GetButton((int)Buttons.joystick).transform.localPosition.x, GetButton((int)Buttons.joystick).transform.localPosition.y, 0);
+        distance = Vector3.Distance(direction, new Vector3(0, 0, 0));
         direction = direction.normalized;
 
-        speed = distance;//GetImage((int)Images.joyStickBG).rectTransform.rect.width;
+        if (distance >= GetImage((int)Images.joystickBG).rectTransform.rect.width * 0.5f)
+        {
+            distance = GetImage((int)Images.joystickBG).rectTransform.rect.width * 0.5f;
+        }
+
+        speed = distance / GetImage((int)Images.joystickBG).rectTransform.rect.width * 20;
 
         player.SetPlayerSpeedAndDirection(speed, direction);
     }
 
-    private void SetJoystickSize()
+    public void SetJoystickSize()
     {
-        Debug.Log(DataManager.Single.Data.InGameData.JoysticSize);
-        GetImage((int)Images.joyStickBG).transform.localScale = new Vector3(DataManager.Single.Data.InGameData.JoysticSize, DataManager.Single.Data.InGameData.JoysticSize, 1);
+        GetImage((int)Images.joystickBG).transform.localScale = new Vector3(DataManager.Single.Data.InGameData.JoysticSize, DataManager.Single.Data.InGameData.JoysticSize, 1);
     }
 
     // Update is called once per frame
