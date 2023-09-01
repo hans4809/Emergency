@@ -87,6 +87,5 @@ public class UI_Setting : UI_Popup
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

@@ -13,6 +13,17 @@ public class UI_Main : UI_Scene
         Setting,
         Quit
     }
+    public enum Texts
+    {
+        TimerText
+    }
+    public enum Images
+    {
+        Timer
+    }
+    [SerializeField] Text TimerText;
+    [SerializeField] Image Timer;
+    float currentTime = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,13 +33,13 @@ public class UI_Main : UI_Scene
     {
         base.Init();
         Bind<Button>(typeof(Buttons));
+        Bind<Text>(typeof(Texts));
+        Bind<Image>(typeof(Images));
         GetButton((int)Buttons.Start).gameObject.AddUIEvent(StartClicked);
         GetButton((int)Buttons.Setting).gameObject.AddUIEvent(SettingClicked);
         GetButton((int)Buttons.Quit).gameObject.AddUIEvent(QuitClicked);
-        if (DataManager.Single.GameToSelect)
-        {
-            Managers.UI.ShowPopUpUI<UI_Stage>();
-        }
+        Timer = GetImage((int)Images.Timer);
+        TimerText.text = $"{Math.Round(currentTime, 1)}";
     }
     private void StartClicked(PointerEventData data)
     {
@@ -45,6 +56,15 @@ public class UI_Main : UI_Scene
     // Update is called once per frame
     void Update()
     {
-        
+        if (currentTime <= 60)
+        {
+            currentTime += 1 * Time.deltaTime;
+            TimerText.text = $"{Math.Round(currentTime, 1)}";
+        }
+        else
+        {
+            //To Do 게임오버
+        }
+        Timer.fillAmount = currentTime / 60;
     }
 }

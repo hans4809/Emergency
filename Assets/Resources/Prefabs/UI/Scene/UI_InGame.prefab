@@ -582,13 +582,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6527142102143437752
@@ -710,3 +710,4 @@ MonoBehaviour:
   StageText: {fileID: 6270508828679363134}
   MaxScore: {fileID: 2443568229137110155}
   TimerText: {fileID: 7397369899511971044}
+  Timer: {fileID: 0}
