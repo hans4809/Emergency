@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Resources;
 using UnityEngine;
 
-public class DataManager : MonoBehaviour
+public class DataManager
 {
     JsonManager jsonManager; // json에서 값을 읽어오거나 저장하는 JsonManager
     public SaveDataClass Data; // 데이터를 저장하는 형식인 SaveDataClass
