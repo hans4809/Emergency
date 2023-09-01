@@ -13,11 +13,18 @@ public class UI_Joystick : UI_Scene
 
     Vector3 direction;
     float speed;
+    float distance;
 
     public enum Buttons
     {
         joystick
     }
+
+    public enum Images
+    {
+        joyStickBG
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,10 +77,12 @@ public class UI_Joystick : UI_Scene
 
     private void SetSpeedAndDirection()
     {
-        direction = GetButton((int)Buttons.joystick).gameObject.transform.position - GetButton((int)Buttons.joystick).transform.parent.transform.position;
+        direction = GetButton((int)Buttons.joystick).gameObject.transform.position - GetImage((int)Images.joyStickBG).transform.position;
         direction.z = 0;
+        distance = Vector3.Distance(GetButton((int)Buttons.joystick).gameObject.transform.position, GetImage((int)Images.joyStickBG).transform.position);
         direction = direction.normalized;
-        speed = 10;
+
+        speed = distance;//GetImage((int)Images.joyStickBG).rectTransform.rect.width;
 
         player.SetPlayerSpeedAndDirection(speed, direction);
     }
@@ -81,7 +90,7 @@ public class UI_Joystick : UI_Scene
     private void SetJoystickSize()
     {
         Debug.Log(DataManager.Single.Data.InGameData.JoysticSize);
-        GetButton((int)Buttons.joystick).transform.parent.localScale = new Vector3(DataManager.Single.Data.InGameData.JoysticSize, DataManager.Single.Data.InGameData.JoysticSize, 1);
+        GetImage((int)Images.joyStickBG).transform.localScale = new Vector3(DataManager.Single.Data.InGameData.JoysticSize, DataManager.Single.Data.InGameData.JoysticSize, 1);
     }
 
     // Update is called once per frame
