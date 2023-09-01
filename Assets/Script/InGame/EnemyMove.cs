@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    Action enemyAction;
+    Action _enemyAction;
+    public bool _isMoveLeft;
+    public float speed;
 
     // Start is called before the first frame update
     void Start()
     {
         MoveStart();
+        Invoke("Delete", 10f);
     }
 
     // Update is called once per frame
@@ -21,16 +24,27 @@ public class EnemyMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        enemyAction?.Invoke();
+        _enemyAction?.Invoke();
     }
 
     void MoveStart()
     {
-        enemyAction += Move;
+        _enemyAction += Move;
     }
 
     void Move()
     {
-        gameObject.transform.position += new Vector3(1, 0, 0) * Time.deltaTime;
+        if(_isMoveLeft)
+        {
+            gameObject.transform.position += new Vector3(-speed, 0, 0) * Time.deltaTime;
+        }
+        else
+        {
+            gameObject.transform.position += new Vector3(speed, 0, 0) * Time.deltaTime;        }
+    }
+
+    void Delete()
+    {
+        Destroy(gameObject);
     }
 }

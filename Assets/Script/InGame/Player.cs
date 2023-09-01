@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public Action PlayerAction;
     private float _speed;
     private Vector3 _direction;
+    SpriteRenderer _renderer;
+    Animator _animator;
 
     // ī�޶� ����
     float x;
@@ -19,6 +21,18 @@ public class Player : MonoBehaviour
 
     private void PlayerMove()
     {
+        if(_direction == Vector3.zero)
+        {
+            _animator.SetBool("Stop", true);
+        }    
+        else if(_direction.x <= 0)
+        {
+            _renderer.flipX = false;
+        }
+        else
+        {
+            _renderer.flipX = true;
+        }
         transform.position += _direction * _speed * Time.deltaTime;
     }
 
@@ -30,11 +44,13 @@ public class Player : MonoBehaviour
 
     public void MoveStart()
     {
+        _animator.SetBool("Stop", false);
         PlayerActionFix += PlayerMove;
     }
 
     public void MoveEnd()
     {
+        _animator.SetBool("Stop", true);
         PlayerActionFix -= PlayerMove;
     }
 
@@ -63,6 +79,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        _renderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
         PlayerAction += CameraSet;
         PlayerAction += SortPlayer;
     }
