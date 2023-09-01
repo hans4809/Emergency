@@ -16,6 +16,13 @@ public class DataManager : MonoBehaviour
 
         Load();
     }
+    public void Init()
+    {
+        Data = new SaveDataClass();
+        jsonManager = new JsonManager();
+
+        Load();
+    }
     public void Save() // saveData�� ��ϵ� �����͵��� json�� �����Ѵ�
     {
         jsonManager.SaveJson(Data);
