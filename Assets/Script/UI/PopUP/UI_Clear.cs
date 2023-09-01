@@ -32,7 +32,7 @@ public class UI_Clear : UI_Popup
         while (fadeCount >= 0.0f)
         {
             fadeCount -= 0.001f;
-            yield return new WaitForSeconds(0.001f);
+            yield return new WaitForSeconds(0.003f);
             color.a = fadeCount;
             BackGround.color = color;
         }

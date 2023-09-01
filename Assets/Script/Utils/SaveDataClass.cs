@@ -41,18 +41,21 @@ public class InGameData
     public int Level; // 1, 2, 3 ( ���� �븻 �ϵ� )
     public float JoysticSize;
     public float Time;
+    public bool IsClear;
 
     public InGameData()
     {
         Level = 1;
         JoysticSize = 1.0f;
         Time = 0.0f;
+        IsClear = false;
     }
 
-    public InGameData(int Level, float JoysticSize, float Time)
+    public InGameData(int Level, float JoysticSize, float Time, bool IsClear)
     {
         this.Level = Level;
         this.JoysticSize = JoysticSize;
         this.Time = Time;
+        this.IsClear = IsClear;
     }
 }

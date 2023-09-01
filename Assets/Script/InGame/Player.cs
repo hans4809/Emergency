@@ -108,6 +108,7 @@ public class Player : MonoBehaviour
         {
             if(UI_Clear == null)
             {
+                DataManager.Single.Data.InGameData.IsClear = true;
                 _panel.SetActive(true);
 
                 StartCoroutine(playerMove());
@@ -119,8 +120,10 @@ public class Player : MonoBehaviour
 
     IEnumerator playerMove()
     { // -5.59 -1.83 -3.76
-
+        _animator.SetBool("Clear", true);
         yield return new WaitForSeconds(1f);
+
+        _animator.SetBool("Clear", false);
 
         for (int i = 0; i < 200; i++)
         {
@@ -129,7 +132,7 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
 
-        _animator.SetBool("Stop", true);
+        _animator.SetBool("Clear", true);
 
         yield return new WaitForSeconds(0f);
         for(int i = 0; i < 100; i++)

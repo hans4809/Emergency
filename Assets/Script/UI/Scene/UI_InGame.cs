@@ -30,6 +30,7 @@ public class UI_InGame : UI_Scene
     public override void Init()
     {
         base.Init();
+        DataManager.Single.Data.InGameData.IsClear = false;
         Bind<Button>(typeof(Buttons));
         Bind<Image>(typeof(Images));
         GetButton((int)Buttons.Pause).gameObject.AddUIEvent(PauseClicked);
@@ -48,6 +49,11 @@ public class UI_InGame : UI_Scene
     // Update is called once per frame
     void Update()
     {
+        if(DataManager.Single.Data.InGameData.IsClear)
+        {
+            return;
+        }
+
         if (currentTime <= 60)
         {
             currentTime += 1 * Time.deltaTime;
