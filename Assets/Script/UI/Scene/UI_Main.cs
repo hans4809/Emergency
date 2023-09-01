@@ -10,7 +10,8 @@ public class UI_Main : UI_Scene
     public enum Buttons
     {
         Start,
-        Setting
+        Setting,
+        Quit
     }
     // Start is called before the first frame update
     void Start()
@@ -23,10 +24,11 @@ public class UI_Main : UI_Scene
         Bind<Button>(typeof(Buttons));
         GetButton((int)Buttons.Start).gameObject.AddUIEvent(StartClicked);
         GetButton((int)Buttons.Setting).gameObject.AddUIEvent(SettingClicked);
-        //if (DataManager.Single.GameToSelect)
-        //{
-        //    Managers.UI.ShowPopUpUI<UI_Stage>();
-        //}
+        GetButton((int)Buttons.Quit).gameObject.AddUIEvent(QuitClicked);
+        if (DataManager.Single.GameToSelect)
+        {
+            Managers.UI.ShowPopUpUI<UI_Stage>();
+        }
     }
     private void StartClicked(PointerEventData data)
     {
@@ -35,6 +37,10 @@ public class UI_Main : UI_Scene
     private void SettingClicked(PointerEventData data)
     {
         Managers.UI.ShowPopUpUI<UI_Setting>();
+    }
+    private void QuitClicked(PointerEventData data)
+    {
+        Application.Quit();
     }
     // Update is called once per frame
     void Update()

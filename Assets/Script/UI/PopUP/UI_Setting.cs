@@ -54,7 +54,7 @@ public class UI_Setting : UI_Popup
     public void MasterVolume(PointerEventData data)
     {
         DataManager.Single.SoundData.masterVolume = MasterSlider.value;
-        if (MasterSlider.value <= -40f)
+        if (DataManager.Single.SoundData.masterVolume <= -40f)
         {
             Managers.Sound.audioMixer.SetFloat("Master", -80);
         }
