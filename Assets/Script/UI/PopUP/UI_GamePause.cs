@@ -34,7 +34,7 @@ public class UI_GamePause : UI_Popup
         GetButton((int)Buttons.Main).gameObject.AddUIEvent(MainClicked);
         MasterSlider = Get<GameObject>((int)GameObjects.MasterSlider).GetComponent<Slider>();
         MasterSlider.gameObject.AddUIEvent(BGMVolume, Define.UIEvent.Drag);
-        MasterSlider.value = Managers.Data.SoundData.masterVolume;
+        MasterSlider.value = DataManager.Single.SoundData.masterVolume;
         Managers.Sound.audioMixer.SetFloat("Master", Mathf.Log10(MasterSlider.value) * 20);
         Managers.Sound._audioSources[(int)Define.Sound.Master].volume = MasterSlider.value;
     }
@@ -46,7 +46,7 @@ public class UI_GamePause : UI_Popup
     public void QuitClicked(PointerEventData eventData) 
     {
         Time.timeScale = 1;
-        Managers.Data.GameToSelect = true;
+        DataManager.Single.GameToSelect = true;
         Managers.Scene.LoadScene(Define.Scene.Main);
     }
     public void MainClicked(PointerEventData eventData)
@@ -56,8 +56,8 @@ public class UI_GamePause : UI_Popup
     }
     public void BGMVolume(PointerEventData data)
     {
-        Managers.Data.SoundData.masterVolume = MasterSlider.value;
-        if (Managers.Data.SoundData.masterVolume <= -40f)
+        DataManager.Single.SoundData.masterVolume = MasterSlider.value;
+        if (DataManager.Single.SoundData.masterVolume <= -40f)
         {
             Managers.Sound.audioMixer.SetFloat("Master", -80);
         }
