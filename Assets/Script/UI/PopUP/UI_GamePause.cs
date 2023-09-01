@@ -48,7 +48,7 @@ public class UI_GamePause : UI_Popup
     public void ResumeClicked(PointerEventData eventData)
     {
         Managers.Sound._audioSources[(int)Define.Sound.BGM].UnPause();
-        GameObject.Find("UI_Joystick").GetComponent<UI_Joystick>().SetJoystickSize();
+        FindObjectOfType<VariableJoystick>().SetJoystickSize();
         Time.timeScale = 1;
         ClosePopUPUI();
     }

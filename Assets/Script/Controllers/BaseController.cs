@@ -27,15 +27,10 @@ public abstract class BaseController : MonoBehaviour
             switch (_state)
             {
                 case Define.State.Idle:
-                    anim.SetBool("isWalk", false);
-                    anim.SetBool("isRun", false);
+                    anim.SetBool("Stop", true);
                     break;
                 case Define.State.Walk:
-                    anim.SetBool("isWalk", true);
-                    anim.SetBool("isRun", false);
-                    break;
-                case Define.State.Run:
-                    anim.SetBool("isRun", true);
+                    anim.SetBool("Stop", false);
                     break;
             }
         }

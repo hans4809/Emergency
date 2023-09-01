@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
         _animator = GetComponent<Animator>();
         _leftDoor = GameObject.Find("LeftDoor");
         _rightDoor = GameObject.Find("RightDoor");
-        _panel = GameObject.Find("UI_Joystick").transform.GetChild(1).gameObject;
+        //_panel = GameObject.Find("UI_Joystick").transform.GetChild(1).gameObject;
         PlayerAction += CameraSet;
         PlayerAction += SortPlayer;
         UI_InGame = FindObjectOfType<UI_InGame>();

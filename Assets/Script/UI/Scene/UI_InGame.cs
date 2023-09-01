@@ -26,6 +26,7 @@ public class UI_InGame : UI_Scene
     void Start()
     {
         Init();
+        FindObjectOfType<VariableJoystick>().SetJoystickSize();
     }
     public override void Init()
     {
