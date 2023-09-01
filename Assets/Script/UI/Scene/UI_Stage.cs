@@ -27,7 +27,7 @@ public class UI_Stage : UI_Scene
     }
     private void Stage1(PointerEventData data)
     {
-        Managers.Data.Data.InGameData.Level = 1;
+        //Managers.Data.Data.InGameData.Level = 1;
         Managers.UI.ShowSceneUI<UI_Loading>();
 
     }

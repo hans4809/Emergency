@@ -19,7 +19,7 @@ public class UI_Loading : UI_Scene
     public override void Init()
     {
         base.Init();
-        Bind<Image>(typeof(Image));
+        Bind<Image>(typeof(Images));
         progressBar = GetImage((int)Images.ProgressBar);
         StartCoroutine(LoadScene());
     }
