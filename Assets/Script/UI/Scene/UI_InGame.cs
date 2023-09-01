@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -21,9 +22,9 @@ public class UI_InGame : UI_Scene
     {
         Timer
     }
-    [SerializeField]Text StageText;
-    [SerializeField]Text MaxScore;
-    [SerializeField]Text TimerText;
+    [SerializeField]TMP_Text StageText;
+    [SerializeField]TMP_Text MaxScore;
+    [SerializeField]TMP_Text TimerText;
     [SerializeField]Image Timer;
     float currentTime = 0f;
     // Start is called before the first frame update

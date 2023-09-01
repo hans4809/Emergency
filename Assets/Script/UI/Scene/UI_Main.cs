@@ -13,17 +13,6 @@ public class UI_Main : UI_Scene
         Setting,
         Quit
     }
-    public enum Texts
-    {
-        TimerText
-    }
-    public enum Images
-    {
-        Timer
-    }
-    [SerializeField] Text TimerText;
-    [SerializeField] Image Timer;
-    float currentTime = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,37 +22,25 @@ public class UI_Main : UI_Scene
     {
         base.Init();
         Bind<Button>(typeof(Buttons));
-        Bind<Text>(typeof(Texts));
-        Bind<Image>(typeof(Images));
         GetButton((int)Buttons.Start).gameObject.AddUIEvent(StartClicked);
         GetButton((int)Buttons.Setting).gameObject.AddUIEvent(SettingClicked);
         GetButton((int)Buttons.Quit).gameObject.AddUIEvent(QuitClicked);
-        Timer = GetImage((int)Images.Timer);
-        TimerText.text = $"{Math.Round(currentTime, 1)}";    }
-    private void StartClicked(PointerEventData data)
-    {
-        Managers.UI.ShowPopUpUI<UI_Stage>();
     }
-    private void SettingClicked(PointerEventData data)
-    {
-        Managers.UI.ShowPopUpUI<UI_Setting>();
-    }
-    private void QuitClicked(PointerEventData data)
-    {
-        Application.Quit();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        if (currentTime <= 60)
+        private void StartClicked(PointerEventData data)
         {
-            currentTime += 1 * Time.deltaTime;
-            TimerText.text = $"{Math.Round(currentTime, 1)}";
+            Managers.UI.ShowPopUpUI<UI_Stage>();
         }
-        else
+        private void SettingClicked(PointerEventData data)
         {
-            //To Do 게임오버
+            Managers.UI.ShowPopUpUI<UI_Setting>();
         }
-        Timer.fillAmount = currentTime / 60;
+        private void QuitClicked(PointerEventData data)
+        {
+            Application.Quit();
+        }
+        // Update is called once per frame
+        void Update()
+        {
+        }
     }
-}
+

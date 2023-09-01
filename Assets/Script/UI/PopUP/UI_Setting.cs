@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -20,8 +21,8 @@ public class UI_Setting : UI_Popup
     }
     private Slider MasterSlider;
     private Slider JoyStickSlider;
-    [SerializeField] private Text VolumeText;
-    [SerializeField] private Text JoyStickText;
+    [SerializeField] private TMP_Text VolumeText;
+    [SerializeField] private TMP_Text JoyStickText;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +60,7 @@ public class UI_Setting : UI_Popup
             Managers.Sound.audioMixer.SetFloat("Master", -80);
         }
         Managers.Sound.audioMixer.SetFloat("Master", Mathf.Log10(MasterSlider.value) * 20);
-        VolumeText.text = $"{Math.Round(MasterSlider.value, 2)*100}%";
+        VolumeText.text = $"오디오 볼륨 : {Math.Round(MasterSlider.value, 2) * 100}%";
         //Managers.Sound._audioSources[(int)Define.Sound.BGM].volume = MasterSlider.value;
         //DataManager.singleTon.saveData._bgmVolume = _bgmSlider.value;
         //DataManager.singleTon.jsonManager.Save<DataDefine.SaveData>(DataManager.singleTon.saveData);
@@ -73,7 +74,7 @@ public class UI_Setting : UI_Popup
     public void JoyStickSize(PointerEventData data)
     {
         DataManager.Single.UIData.JoyStickSize = JoyStickSlider.value;
-        JoyStickText.text = $"{Math.Round(JoyStickSlider.value, 2) * 100}%";
+        JoyStickText.text = $"조이스틱 크기 : {Math.Round(JoyStickSlider.value, 2) * 100}%";
         //Managers.Sound._audioSources[(int)Define.Sound.BGM].volume = MasterSlider.value;
         //DataManager.singleTon.saveData._bgmVolume = _bgmSlider.value;
         //DataManager.singleTon.jsonManager.Save<DataDefine.SaveData>(DataManager.singleTon.saveData);

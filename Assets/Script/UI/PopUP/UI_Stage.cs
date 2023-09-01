@@ -12,6 +12,11 @@ public class UI_Stage : UI_Popup
         Stage2,
         Stage3
     }
+    public enum Images
+    {
+        Test
+    }
+    public Image Test;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +26,11 @@ public class UI_Stage : UI_Popup
     {
         base.Init();
         Bind<Button>(typeof(Buttons));
+        Bind<Image>(typeof(Images));
         GetButton((int)Buttons.Stage1).gameObject.AddUIEvent(Stage1);
         GetButton((int)Buttons.Stage2).gameObject.AddUIEvent(Stage2);
         GetButton((int)Buttons.Stage3).gameObject.AddUIEvent(Stage3);
+        Test = GetImage((int)Images.Test);
     }
     private void Stage1(PointerEventData data)
     {
@@ -41,6 +48,7 @@ public class UI_Stage : UI_Popup
         DataManager.Single.Data.InGameData.Level = 3;
         Managers.UI.ShowPopUpUI<UI_Loading>();
     }
+
     // Update is called once per frame
     void Update()
     {
