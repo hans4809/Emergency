@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
             if(UI_Clear == null)
             {
                 Managers.Sound.Stop(Managers.Sound._audioSources[(int)Define.Sound.BGM]);
-                Managers.Sound.Play("Sounds/SFX/GameClear");
+                Managers.Sound.Play("Sounds/BGM/GameClear", Define.Sound.BGM);
                 UI_Clear = Managers.UI.ShowPopUpUI<UI_Clear>();
             }
         }

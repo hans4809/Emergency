@@ -34,6 +34,9 @@ public class UI_Clear : UI_Popup
             color.a = fadeCount;
             BackGround.color = color;
         }
+
+        yield return new WaitForSeconds(3f);
+        Managers.Sound.Stop(Managers.Sound._audioSources[(int)Define.Sound.BGM]);
         Managers.Scene.LoadScene(Define.Scene.Main);
     }
 }
