@@ -5,7 +5,7 @@ using UnityEngine.Diagnostics;
 
 public class UI_Manager
 {
-    int _order = 1000;
+    int _order = 1200;
 
     Stack<UI_Popup> _popUpStack = new Stack<UI_Popup>();
 
@@ -38,7 +38,7 @@ public class UI_Manager
         }
         else
         {
-            canvas.sortingOrder = 5;
+            canvas.sortingOrder = 1005;
         }
     }
     public T ShowAnyUI<T>(string name = null) where T : UI_Base

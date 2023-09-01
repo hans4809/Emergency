@@ -14,6 +14,10 @@ public class Player : MonoBehaviour
     Animator _animator;
     UI_Clear UI_Clear;
 
+    GameObject _leftDoor;
+    GameObject _rightDoor;
+    GameObject _panel;
+
     // ī�޶� ����
     float x;
     float y;
@@ -82,6 +86,9 @@ public class Player : MonoBehaviour
     {
         _renderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
+        _leftDoor = GameObject.Find("LeftDoor");
+        _rightDoor = GameObject.Find("RightDoor");
+        _panel = GameObject.Find("UI_Joystick").transform.GetChild(1).gameObject;
         PlayerAction += CameraSet;
         PlayerAction += SortPlayer;
     }
@@ -101,10 +108,39 @@ public class Player : MonoBehaviour
         {
             if(UI_Clear == null)
             {
+                _panel.SetActive(true);
+
+                StartCoroutine(playerMove());
                 Managers.Sound.Stop(Managers.Sound._audioSources[(int)Define.Sound.BGM]);
                 Managers.Sound.Play("Sounds/BGM/GameClear", Define.Sound.BGM);
-                UI_Clear = Managers.UI.ShowPopUpUI<UI_Clear>();
             }
         }
+    }
+
+    IEnumerator playerMove()
+    { // -5.59 -1.83 -3.76
+
+        yield return new WaitForSeconds(1f);
+
+        for (int i = 0; i < 200; i++)
+        {
+            _animator.SetBool("Stop", false);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 232.2f, 0), 0.05f);
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        _animator.SetBool("Stop", true);
+
+        yield return new WaitForSeconds(0f);
+        for(int i = 0; i < 100; i++)
+        {
+            _rightDoor.transform.position += new Vector3(-0.0376f, 0, 0);
+            _leftDoor.transform.position += new Vector3(0.0376f, 0, 0);
+            yield return new WaitForSeconds(0.02f);
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        UI_Clear = Managers.UI.ShowPopUpUI<UI_Clear>();
     }
 }

@@ -25,17 +25,19 @@ public class UI_Clear : UI_Popup
     }
     IEnumerator FadeCoroutine()
     {
+        yield return new WaitForSeconds(1f);
+
         Color color = BackGround.color;
         float fadeCount = 1;
         while (fadeCount >= 0.0f)
         {
-            fadeCount -= 0.01f;
-            yield return new WaitForSeconds(0.01f);
+            fadeCount -= 0.001f;
+            yield return new WaitForSeconds(0.001f);
             color.a = fadeCount;
             BackGround.color = color;
         }
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         Managers.Sound.Stop(Managers.Sound._audioSources[(int)Define.Sound.BGM]);
         Managers.Scene.LoadScene(Define.Scene.Main);
     }

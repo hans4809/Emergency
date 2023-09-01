@@ -20,6 +20,7 @@ public class SaveDataClass
     }
 }
 
+[System.Serializable]
 public class SoundData
 {
     public float masterVolume;
@@ -34,6 +35,7 @@ public class SoundData
     }
 }
 
+[System.Serializable]
 public class InGameData
 {
     public int Level; // 1, 2, 3 ( ���� �븻 �ϵ� )

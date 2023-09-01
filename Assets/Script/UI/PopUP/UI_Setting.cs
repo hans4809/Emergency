@@ -75,7 +75,7 @@ public class UI_Setting : UI_Popup
     }
     public void JoyStickSize(PointerEventData data)
     {
-        DataManager.Single.UIData.JoyStickSize = JoyStickSlider.value;
+        DataManager.Single.Data.InGameData.JoysticSize = JoyStickSlider.value;
         JoyStickText.text = $"{Math.Round(JoyStickSlider.value, 2) * 100}%";
         //Managers.Sound._audioSources[(int)Define.Sound.BGM].volume = MasterSlider.value;
         //DataManager.singleTon.saveData._bgmVolume = _bgmSlider.value;

@@ -40,6 +40,8 @@ public class UI_Joystick : UI_Scene
         GetButton((int)Buttons.joystick).gameObject.AddUIEvent(Drag, Define.UIEvent.Drag);
 
         player = GameObject.Find("Player").GetOrAddComponent<Player>();
+
+        SetJoystickSize();
     }
 
     private void StickClickStart(PointerEventData data)

@@ -24,6 +24,10 @@ public class UI_Ending : UI_Popup
     }
     IEnumerator FadeCoroutine()
     {
+
+
+        yield return new WaitForSeconds(1f);
+
         Color color = BackGround.color;
         float fadeCount = 1;
         while (fadeCount >= 0.0f)
