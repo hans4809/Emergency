@@ -32,7 +32,9 @@ public class UI_GamePause : UI_Popup
     {
         base.Init();
         Bind<Button>(typeof(Buttons));
-        Bind<GameObject>(typeof(GameObjects));
+        Bind<GameObject>(typeof(Sliders));
+        MasterSlider = Get<GameObject>((int)GameObjects.MasterSlider).GetComponent<Slider>();
+        JoyStickSlider = Get<GameObject>((int)GameObjects.JoyStickSlider).GetComponent<Slider>();
         GetButton((int)Buttons.Resume).gameObject.AddUIEvent(ResumeClicked);
         GetButton((int)Buttons.Main).gameObject.AddUIEvent(MainClicked);
         MasterSlider = Get<GameObject>((int)GameObjects.MasterSlider).GetComponent<Slider>();
@@ -44,6 +46,7 @@ public class UI_GamePause : UI_Popup
     }
     public void ResumeClicked(PointerEventData eventData)
     {
+        GameObject.Find("UI_Joystick").GetComponent<UI_Joystick>().SetJoystickSize();
         Time.timeScale = 1;
         ClosePopUPUI();
     }
@@ -72,6 +75,7 @@ public class UI_GamePause : UI_Popup
     }
     public void JoyStickSize(PointerEventData data)
     {
+        DataManager.Single.Data.InGameData.JoysticSize = JoyStickSlider.value;
         DataManager.Single.UIData.JoyStickSize = JoyStickSlider.value;
         JoyStickText.text = $"{Math.Round(JoyStickSlider.value, 2) * 100}%";
     }
