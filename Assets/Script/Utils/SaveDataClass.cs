@@ -8,18 +8,15 @@ using UnityEditor;
 public class SaveDataClass
 {
     public InGameData InGameData;
-    public SoundData soundData;
 
     public SaveDataClass()
     {
         InGameData = new InGameData();
-        soundData = new SoundData();
     }
 
     public SaveDataClass(InGameData InGameData, SoundData soundData)
     {
         this.InGameData = InGameData;
-        this.soundData = soundData;
     }
 }
 

@@ -28,11 +28,21 @@ public class UI_Setting : UI_Popup
         base.Init();
         Bind<Button>(typeof(Buttons));
         Bind<GameObject>(typeof(GameObjects));
-        GetButton((int)Buttons.Close);
+        GetButton((int)Buttons.Close).gameObject.AddUIEvent(CloseClicked);
         BGMSlider = Get<GameObject>((int)GameObjects.BGMSlider).GetComponent<Slider>();
         SFXSlider = Get<GameObject>((int)GameObjects.SFXSlider).GetComponent<Slider>();
         BGMSlider.gameObject.AddUIEvent(BGMVolume , Define.UIEvent.Drag);
         SFXSlider.gameObject.AddUIEvent(SFXVolume , Define.UIEvent.Drag);
+        BGMSlider.value = Managers.Data.SoundData.bgmVolume;
+        Managers.Sound.audioMixer.SetFloat("BGM", Mathf.Log10(BGMSlider.value) * 20);
+        Managers.Sound._audioSources[(int)Define.Sound.BGM].volume = BGMSlider.value;
+        SFXSlider.value = Managers.Data.SoundData.sfxVolume;
+        Managers.Sound.audioMixer.SetFloat("SFX", Mathf.Log10(SFXSlider.value) * 20);
+        Managers.Sound._audioSources[(int)Define.Sound.SFX].volume = SFXSlider.value;
+    }
+    public void CloseClicked(PointerEventData data)
+    {
+        ClosePopUPUI();
     }
     public void BGMVolume(PointerEventData data)
     {
@@ -57,9 +67,9 @@ public class UI_Setting : UI_Popup
         Managers.Data.SoundData.sfxVolume = SFXSlider.value;
         if (Managers.Data.SoundData.sfxVolume <= -40f)
         {
-            Managers.Sound.audioMixer.SetFloat("BGM", -80);
+            Managers.Sound.audioMixer.SetFloat("SFX", -80);
         }
-        Managers.Sound.audioMixer.SetFloat("BGM", Mathf.Log10(SFXSlider.value) * 20);
+        Managers.Sound.audioMixer.SetFloat("SFX", Mathf.Log10(SFXSlider.value) * 20);
         Managers.Sound._audioSources[(int)Define.Sound.SFX].volume = SFXSlider.value;
         //DataManager.singleTon.saveData._sfxVolume = _sfxSlider.value;
         //DataManager.singleTon.jsonManager.Save<DataDefine.SaveData>(DataManager.singleTon.saveData);
