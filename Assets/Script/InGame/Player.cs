@@ -110,12 +110,10 @@ public class Player : MonoBehaviour
         {
             if(UI_Clear == null)
             {
-<<<<<<< Updated upstream
                 DataManager.Single.Data.InGameData.IsClear = true;
                 _panel.SetActive(true);
 
                 StartCoroutine(playerMove());
-=======
                 switch (DataManager.Single.Data.InGameData.Level)
                 {
                     case 1:
@@ -129,7 +127,6 @@ public class Player : MonoBehaviour
                         break;
                 }
                 DataManager.Single.Save();
->>>>>>> Stashed changes
                 Managers.Sound.Stop(Managers.Sound._audioSources[(int)Define.Sound.BGM]);
                 Managers.Sound.Play("Sounds/BGM/GameClear", Define.Sound.BGM);
             }

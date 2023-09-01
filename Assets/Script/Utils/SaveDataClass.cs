@@ -40,20 +40,16 @@ public class InGameData
 {
     public int Level; // 1, 2, 3 ( ���� �븻 �ϵ� )
     public float JoysticSize;
-<<<<<<< Updated upstream
     public float Time;
     public bool IsClear;
-=======
     public float Score1;
     public float Score2;
     public float Score3;
->>>>>>> Stashed changes
 
     public InGameData()
     {
         Level = 1;
         JoysticSize = 1.0f;
-<<<<<<< Updated upstream
         Time = 0.0f;
         IsClear = false;
     }
@@ -64,7 +60,6 @@ public class InGameData
         this.JoysticSize = JoysticSize;
         this.Time = Time;
         this.IsClear = IsClear;
-=======
         Score1 = 0.0f;
         Score2 = 0.0f;
         Score3 = 0.0f;
@@ -77,6 +72,5 @@ public class InGameData
         this.Score1 = Score1;
         this.Score2 = Score2;
         this.Score3 = Score3;
->>>>>>> Stashed changes
     }
 }

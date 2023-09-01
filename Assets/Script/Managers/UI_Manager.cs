@@ -38,11 +38,7 @@ public class UI_Manager
         }
         else
         {
-<<<<<<< Updated upstream
             canvas.sortingOrder = 1005;
-=======
-            canvas.sortingOrder = 950;
->>>>>>> Stashed changes
         }
     }
     public T ShowAnyUI<T>(string name = null) where T : UI_Base
