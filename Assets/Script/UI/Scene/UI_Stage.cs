@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UI_Stage : UI_Scene
@@ -20,11 +21,22 @@ public class UI_Stage : UI_Scene
     {
         base.Init();
         Bind<Button>(typeof(Buttons));
-        GetButton((int)Buttons.Stage1);
-        GetButton((int)Buttons.Stage2);
-        GetButton((int)Buttons.Stage3);
+        GetButton((int)Buttons.Stage1).gameObject.AddUIEvent(Stage1);
+        GetButton((int)Buttons.Stage2).gameObject.AddUIEvent(Stage2);
+        GetButton((int)Buttons.Stage3).gameObject.AddUIEvent(Stage3);
     }
+    private void Stage1(PointerEventData data)
+    {
+        
+    }
+    private void Stage2(PointerEventData data)
+    {
 
+    }
+    private void Stage3(PointerEventData data)
+    {
+
+    }
     // Update is called once per frame
     void Update()
     {
