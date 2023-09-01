@@ -27,18 +27,18 @@ public class UI_Stage : UI_Popup
     }
     private void Stage1(PointerEventData data)
     {
-        Managers.Data.Data.InGameData.Level = 1;
+        DataManager.Single.Data.InGameData.Level = 1;
         Managers.UI.ShowPopUpUI<UI_Loading>();
 
     }
     private void Stage2(PointerEventData data)
     {
-        Managers.Data.Data.InGameData.Level = 2;
+        DataManager.Single.Data.InGameData.Level = 2;
         Managers.UI.ShowPopUpUI<UI_Loading>();
     }
     private void Stage3(PointerEventData data)
     {
-        Managers.Data.Data.InGameData.Level = 3;
+        DataManager.Single.Data.InGameData.Level = 3;
         Managers.UI.ShowPopUpUI<UI_Loading>();
     }
     // Update is called once per frame

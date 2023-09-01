@@ -23,10 +23,10 @@ public class UI_Main : UI_Scene
         Bind<Button>(typeof(Buttons));
         GetButton((int)Buttons.Start).gameObject.AddUIEvent(StartClicked);
         GetButton((int)Buttons.Setting).gameObject.AddUIEvent(SettingClicked);
-        if (Managers.Data.GameToSelect)
-        {
-            Managers.UI.ShowPopUpUI<UI_Stage>();
-        }
+        //if (DataManager.Single.GameToSelect)
+        //{
+        //    Managers.UI.ShowPopUpUI<UI_Stage>();
+        //}
     }
     private void StartClicked(PointerEventData data)
     {

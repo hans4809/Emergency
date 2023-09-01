@@ -31,7 +31,7 @@ public class UI_Setting : UI_Popup
         GetButton((int)Buttons.Credit).gameObject.AddUIEvent(CreditClicked);
         MasterSlider = Get<GameObject>((int)GameObjects.MasterSlider).GetComponent<Slider>();
         MasterSlider.gameObject.AddUIEvent(MasterVolume, Define.UIEvent.Drag);
-        MasterSlider.value = Managers.Data.SoundData.masterVolume;
+        MasterSlider.value = DataManager.Single.SoundData.masterVolume;
         Managers.Sound.audioMixer.SetFloat("Master", Mathf.Log10(MasterSlider.value) * 20);
         //Managers.Sound._audioSources[(int)Define.Sound.BGM].volume = MasterSlider.value;
     }
@@ -45,8 +45,9 @@ public class UI_Setting : UI_Popup
     }
     public void MasterVolume(PointerEventData data)
     {
-        Managers.Data.SoundData.masterVolume = MasterSlider.value;
-        if (Managers.Data.SoundData.masterVolume <= -40f)
+        DataManager.Single.SoundData.masterVolume = MasterSlider.value;
+        Debug.Log(DataManager.Single.SoundData.masterVolume);
+        if (DataManager.Single.SoundData.masterVolume <= -40f)
         {
             Managers.Sound.audioMixer.SetFloat("Master", -80);
         }

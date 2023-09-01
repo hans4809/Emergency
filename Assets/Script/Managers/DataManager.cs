@@ -27,7 +27,8 @@ public class DataManager : MonoBehaviour
 
         Data = new SaveDataClass();
         jsonManager = new JsonManager();
-        SoundData = new SoundData(0.5f);
+        SoundData = new SoundData();
+        UIData = new UIData();
         Load();
     }
 
@@ -44,5 +45,5 @@ public class DataManager : MonoBehaviour
 
 public class UIData
 {
-    public bool GameToSelect;
+    public bool GameToSelect = false;
 }
