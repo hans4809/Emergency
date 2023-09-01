@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -14,9 +15,13 @@ public class UI_Setting : UI_Popup
     }
     public enum GameObjects
     {
-        MasterSlider
+        MasterSlider,
+        JoyStickSlider
     }
     private Slider MasterSlider;
+    private Slider JoyStickSlider;
+    [SerializeField] private Text VolumeText;
+    [SerializeField] private Text JoyStickText;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,8 +35,11 @@ public class UI_Setting : UI_Popup
         GetButton((int)Buttons.Close).gameObject.AddUIEvent(CloseClicked);
         GetButton((int)Buttons.Credit).gameObject.AddUIEvent(CreditClicked);
         MasterSlider = Get<GameObject>((int)GameObjects.MasterSlider).GetComponent<Slider>();
+        JoyStickSlider = Get<GameObject>((int)GameObjects.JoyStickSlider).GetComponent<Slider>();
         MasterSlider.gameObject.AddUIEvent(MasterVolume, Define.UIEvent.Drag);
+        JoyStickSlider.gameObject.AddUIEvent(JoyStickSize, Define.UIEvent.Drag);
         MasterSlider.value = DataManager.Single.SoundData.masterVolume;
+        JoyStickSlider.value = DataManager.Single.UIData.JoyStickSize;
         Managers.Sound.audioMixer.SetFloat("Master", Mathf.Log10(MasterSlider.value) * 20);
         //Managers.Sound._audioSources[(int)Define.Sound.BGM].volume = MasterSlider.value;
     }
@@ -46,12 +54,26 @@ public class UI_Setting : UI_Popup
     public void MasterVolume(PointerEventData data)
     {
         DataManager.Single.SoundData.masterVolume = MasterSlider.value;
-        Debug.Log(DataManager.Single.SoundData.masterVolume);
         if (DataManager.Single.SoundData.masterVolume <= -40f)
         {
             Managers.Sound.audioMixer.SetFloat("Master", -80);
         }
         Managers.Sound.audioMixer.SetFloat("Master", Mathf.Log10(MasterSlider.value) * 20);
+        VolumeText.text = $"{Math.Round(MasterSlider.value, 2)*100}%";
+        //Managers.Sound._audioSources[(int)Define.Sound.BGM].volume = MasterSlider.value;
+        //DataManager.singleTon.saveData._bgmVolume = _bgmSlider.value;
+        //DataManager.singleTon.jsonManager.Save<DataDefine.SaveData>(DataManager.singleTon.saveData);
+        //if (DataManager.singleTon.saveData._bgmVolume <= -40f)
+        //{
+        //    Managers.Sound.audioMixer.SetFloat("BGM", -80);
+        //}
+        //Managers.Sound.audioMixer.SetFloat("BGM", Mathf.Log10(_bgmSlider.value) * 20);
+        //Managers.Sound._audioSources[(int)Define.Sound.BGM].volume = _sfxSlider.value;
+    }
+    public void JoyStickSize(PointerEventData data)
+    {
+        DataManager.Single.UIData.JoyStickSize = JoyStickSlider.value;
+        JoyStickText.text = $"{Math.Round(JoyStickSlider.value, 2) * 100}%";
         //Managers.Sound._audioSources[(int)Define.Sound.BGM].volume = MasterSlider.value;
         //DataManager.singleTon.saveData._bgmVolume = _bgmSlider.value;
         //DataManager.singleTon.jsonManager.Save<DataDefine.SaveData>(DataManager.singleTon.saveData);

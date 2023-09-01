@@ -25,7 +25,7 @@ public class SoundData
     public float masterVolume;
     public SoundData()
     {
-        this.masterVolume = 0.5f;
+        this.masterVolume = 1f;
     }
     public SoundData(float masterVolume)
     {

@@ -10,11 +10,11 @@ public class Player : MonoBehaviour
     private float _speed;
     private Vector3 _direction;
 
-    // Ä«¸Þ¶ó °ü·Ã
+    // Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½
     float x;
     float y;
 
-    #region ¿òÁ÷ÀÓ °ü·Ã
+    #region ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private void PlayerMove()
     {
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
 
     #endregion
 
-    #region Ä«¸Þ¶ó °ü·Ã
+    #region Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     void CameraSet()
     {

@@ -46,4 +46,5 @@ public class DataManager : MonoBehaviour
 public class UIData
 {
     public bool GameToSelect = false;
+    public float JoyStickSize = 1f;
 }
