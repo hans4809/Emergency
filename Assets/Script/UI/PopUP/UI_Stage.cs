@@ -36,16 +36,19 @@ public class UI_Stage : UI_Popup
     private void Stage1(PointerEventData data)
     {
         DataManager.Single.Data.InGameData.Level = 1;
+        Managers.Sound.Play("Sounds/SFX/StageSelect");
         Managers.UI.ShowPopUpUI<UI_Loading>();
     }
     private void Stage2(PointerEventData data)
     {
         DataManager.Single.Data.InGameData.Level = 2;
+        Managers.Sound.Play("Sounds/SFX/StageSelect");
         Managers.UI.ShowPopUpUI<UI_Loading>();
     }
     private void Stage3(PointerEventData data)
     {
         DataManager.Single.Data.InGameData.Level = 3;
+        Managers.Sound.Play("Sounds/SFX/StageSelect");
         Managers.UI.ShowPopUpUI<UI_Loading>();
     }
     private void Back(PointerEventData data)
