@@ -84,7 +84,7 @@ public class UI_Joystick : UI_Scene
             distance = GetImage((int)Images.joystickBG).rectTransform.rect.width * 0.5f;
         }
 
-        speed = distance / GetImage((int)Images.joystickBG).rectTransform.rect.width * 10;
+        speed = distance / GetImage((int)Images.joystickBG).rectTransform.rect.width * 20;
 
         player.SetPlayerSpeedAndDirection(speed, direction);
     }

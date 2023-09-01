@@ -7,6 +7,9 @@ public class Map : MonoBehaviour
     [SerializeField]
     GameObject enemy;
 
+    [SerializeField]
+    List<Sprite> enemySpriteList;
+
     List<int> enemyPool;
 
     int _fixEnemyNum;
@@ -42,7 +45,8 @@ public class Map : MonoBehaviour
             x = UnityEngine.Random.Range(-width * 0.5f, width * 0.5f);
             y = UnityEngine.Random.Range(-height * 0.5f, height * 0.5f);
 
-            Instantiate(enemy, new Vector3(defaultV3.x + x, defaultV3.y + y, 0), Quaternion.identity);
+            GameObject enemyObj = Instantiate(enemy, new Vector3(defaultV3.x + x, defaultV3.y + y, 0), Quaternion.identity);
+            enemyObj.GetComponent<SpriteRenderer>().sprite = enemySpriteList[UnityEngine.Random.Range(0, 3)];
         }
     }
 }
