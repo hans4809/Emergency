@@ -11,7 +11,7 @@ public class Main : BaseScene
     {
         base.Init();
         SceneType = Define.Scene.Main;
-        //Managers.Sound.Play("Sounds/BGM/Main", Define.Sound.BGM);
+        Managers.Sound.Play("Sounds/BGM/MainBGM", Define.Sound.BGM);
         Managers.UI.ShowSceneUI<UI_Main>();
     }
     // Update is called once per frame

@@ -140,7 +140,7 @@ public class Map : MonoBehaviour
         RandomSetting(_moveRightEnemy, new Vector3(-17, 18, 0) + GameObject.Find("Player").transform.position, 16, 4, UnityEngine.Random.Range(1, 4));
     }
 
-    void RandomSetting(GameObject enemy, Vector3 defaultV3, int width, int height, int num) // Áß½ÉÁ¡ °¡·Î ¼¼·Î ÀÎ¿ø¼ö
+    void RandomSetting(GameObject enemy, Vector3 defaultV3, int width, int height, int num) // ï¿½ß½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Î¿ï¿½ï¿½ï¿½
     {
         for(int i = 0; i < num; i++)
         {
