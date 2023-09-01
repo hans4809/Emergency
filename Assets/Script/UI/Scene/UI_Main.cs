@@ -39,8 +39,7 @@ public class UI_Main : UI_Scene
         GetButton((int)Buttons.Setting).gameObject.AddUIEvent(SettingClicked);
         GetButton((int)Buttons.Quit).gameObject.AddUIEvent(QuitClicked);
         Timer = GetImage((int)Images.Timer);
-        TimerText.text = $"{Math.Round(currentTime, 1)}";
-    }
+        TimerText.text = $"{Math.Round(currentTime, 1)}";    }
     private void StartClicked(PointerEventData data)
     {
         Managers.UI.ShowPopUpUI<UI_Stage>();
