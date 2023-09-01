@@ -37,14 +37,17 @@ public class SoundData
 public class InGameData
 {
     public int Level; // 1, 2, 3 ( ���� �븻 �ϵ� )
+    public float JoysticSize;
 
     public InGameData()
     {
         Level = 1;
+        JoysticSize = 1.0f;
     }
 
-    public InGameData(int Level)
+    public InGameData(int Level, float JoysticSize)
     {
         this.Level = Level;
+        this.JoysticSize = JoysticSize;
     }
 }

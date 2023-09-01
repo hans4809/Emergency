@@ -12,7 +12,7 @@ public class UI_Joystick : UI_Scene
     Player player;
 
     Vector3 direction;
-    float power;
+    float speed;
 
     public enum Buttons
     {
@@ -32,6 +32,9 @@ public class UI_Joystick : UI_Scene
         GetButton((int)Buttons.joystick).gameObject.AddUIEvent(Drag, Define.UIEvent.Drag);
 
         player = GameObject.Find("Player").GetOrAddComponent<Player>();
+
+        Managers.Data.Data.InGameData.JoysticSize = 2;
+        SetJoystickSize();
     }
 
     private void StickClickStart(PointerEventData data)
@@ -48,7 +51,7 @@ public class UI_Joystick : UI_Scene
     private void StickClickEnd(PointerEventData data)
     {
         direction = Vector3.zero;
-        power = 0;
+        speed = 0;
 
         GetButton((int)Buttons.joystick).gameObject.transform.localPosition = new Vector3(0f, 0f, 0f);
 
@@ -70,9 +73,15 @@ public class UI_Joystick : UI_Scene
         direction = GetButton((int)Buttons.joystick).gameObject.transform.position - GetButton((int)Buttons.joystick).transform.parent.transform.position;
         direction.z = 0;
         direction = direction.normalized;
-        power = 3;
+        speed = 10;
 
-        player.SetPlayerSpeedAndDirection(power, direction);
+        player.SetPlayerSpeedAndDirection(speed, direction);
+    }
+
+    private void SetJoystickSize()
+    {
+        Debug.Log(Managers.Data.Data.InGameData.JoysticSize);
+        GetButton((int)Buttons.joystick).transform.parent.localScale = new Vector3(Managers.Data.Data.InGameData.JoysticSize, Managers.Data.Data.InGameData.JoysticSize, 1);
     }
 
     // Update is called once per frame
