@@ -12,12 +12,6 @@ public class UI_InGame : UI_Scene
     {
         Pause
     }
-    public enum Texts
-    {
-        StageText,
-        MaxScore,
-        TimerText
-    }
     public enum Images
     {
         Timer
@@ -27,6 +21,7 @@ public class UI_InGame : UI_Scene
     [SerializeField]TMP_Text TimerText;
     [SerializeField]Image Timer;
     float currentTime = 0f;
+    [SerializeField] UI_Ending uI_Ending;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +31,6 @@ public class UI_InGame : UI_Scene
     {
         base.Init();
         Bind<Button>(typeof(Buttons));
-        Bind<Text>(typeof(Texts));
         Bind<Image>(typeof(Images));
         GetButton((int)Buttons.Pause).gameObject.AddUIEvent(PauseClicked);
         Timer = GetImage((int)Images.Timer);
@@ -61,7 +55,16 @@ public class UI_InGame : UI_Scene
         }
         else
         {
-            //To Do 게임오버
+            if (uI_Ending == null)
+            {
+                Managers.Sound.Stop(Managers.Sound._audioSources[(int)Define.Sound.BGM]);
+                Managers.Sound.Play("Sounds/SFX/GameOver");
+                uI_Ending = Managers.UI.ShowPopUpUI<UI_Ending>();
+            }
+        }
+        if (currentTime >= 50)
+        {
+            Managers.Sound.Play("Sounds/SFX/TimeOut10");
         }
         Timer.fillAmount = currentTime / 60;
     }

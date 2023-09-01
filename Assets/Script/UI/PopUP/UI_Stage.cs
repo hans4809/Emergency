@@ -37,19 +37,22 @@ public class UI_Stage : UI_Popup
     {
         DataManager.Single.Data.InGameData.Level = 1;
         Managers.Sound.Play("Sounds/SFX/StageSelect");
-        Managers.UI.ShowPopUpUI<UI_Loading>();
+        //Managers.UI.ShowPopUpUI<UI_Loading>();
+        Managers.Scene.LoadScene(Define.Scene.InGame);
     }
     private void Stage2(PointerEventData data)
     {
         DataManager.Single.Data.InGameData.Level = 2;
         Managers.Sound.Play("Sounds/SFX/StageSelect");
-        Managers.UI.ShowPopUpUI<UI_Loading>();
+        //Managers.UI.ShowPopUpUI<UI_Loading>();
+        Managers.Scene.LoadScene(Define.Scene.InGame);
     }
     private void Stage3(PointerEventData data)
     {
         DataManager.Single.Data.InGameData.Level = 3;
         Managers.Sound.Play("Sounds/SFX/StageSelect");
-        Managers.UI.ShowPopUpUI<UI_Loading>();
+        //Managers.UI.ShowPopUpUI<UI_Loading>();
+        Managers.Scene.LoadScene(Define.Scene.InGame);
     }
     private void Back(PointerEventData data)
     {

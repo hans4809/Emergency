@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Ending : UI_Popup
+public class UI_Clear : UI_Popup
 {
+    // Start is called before the first frame update
     public enum Images
     {
         BackGround
@@ -34,9 +35,5 @@ public class UI_Ending : UI_Popup
             BackGround.color = color;
         }
         Managers.Scene.LoadScene(Define.Scene.Main);
-    }        // Update is called once per frame
-    void Update()
-    {
-
     }
 }

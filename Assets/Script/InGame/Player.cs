@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private Vector3 _direction;
     SpriteRenderer _renderer;
     Animator _animator;
+    UI_Clear UI_Clear;
 
     // ī�޶� ����
     float x;
@@ -93,5 +94,17 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         PlayerActionFix?.Invoke();
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Clear")
+        {
+            if(UI_Clear == null)
+            {
+                Managers.Sound.Stop(Managers.Sound._audioSources[(int)Define.Sound.BGM]);
+                Managers.Sound.Play("Sounds/SFX/GameClear");
+                UI_Clear = Managers.UI.ShowPopUpUI<UI_Clear>();
+            }
+        }
     }
 }
