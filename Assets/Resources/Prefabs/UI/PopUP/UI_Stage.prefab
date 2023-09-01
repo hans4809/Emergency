@@ -766,7 +766,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79abbb63e2d0c147ab3b46de68b3377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Test: {fileID: 0}
+  score1: {fileID: 8827870391497161712}
+  score2: {fileID: 7472753978738600056}
+  score3: {fileID: 4255212992479753974}
 --- !u!1 &6333239190356984220
 GameObject:
   m_ObjectHideFlags: 0

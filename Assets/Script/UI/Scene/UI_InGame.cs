@@ -20,7 +20,7 @@ public class UI_InGame : UI_Scene
     [SerializeField]TMP_Text MaxScore;
     [SerializeField]TMP_Text TimerText;
     [SerializeField]Image Timer;
-    float currentTime = 0f;
+    public float currentTime = 0f;
     [SerializeField] UI_Ending uI_Ending;
     // Start is called before the first frame update
     void Start()
@@ -36,7 +36,18 @@ public class UI_InGame : UI_Scene
         GetButton((int)Buttons.Pause).gameObject.AddUIEvent(PauseClicked);
         Timer = GetImage((int)Images.Timer);
         StageText.text = $"{DataManager.Single.Data.InGameData.Level}";
-        MaxScore.text = $"{Math.Round(DataManager.Single.Data.InGameData.Time, 1)}";
+        switch (DataManager.Single.Data.InGameData.Level)
+        {
+            case 1:
+                MaxScore.text = $"{Math.Round(DataManager.Single.Data.InGameData.Score1, 2)}";
+                break;
+            case 2:
+                MaxScore.text = $"{Math.Round(DataManager.Single.Data.InGameData.Score2, 2)}";
+                break;
+            case 3:
+                MaxScore.text = $"{Math.Round(DataManager.Single.Data.InGameData.Score3, 2)}";
+                break;
+        }
         TimerText.text = $"{Math.Round(currentTime, 1)}";
     }
 
@@ -63,6 +74,19 @@ public class UI_InGame : UI_Scene
         {
             if (uI_Ending == null)
             {
+                switch (DataManager.Single.Data.InGameData.Level)
+                {
+                    case 1:
+                        DataManager.Single.Data.InGameData.Score1 = 60;
+                        break;
+                    case 2:
+                        DataManager.Single.Data.InGameData.Score2 = 60;
+                        break;
+                    case 3:
+                        DataManager.Single.Data.InGameData.Score3 = 60;
+                        break;
+                }
+                DataManager.Single.Save();
                 Managers.Sound.Stop(Managers.Sound._audioSources[(int)Define.Sound.BGM]);
                 Managers.Sound.Play("Sounds/SFX/GameOver");
                 uI_Ending = Managers.UI.ShowPopUpUI<UI_Ending>();

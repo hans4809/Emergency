@@ -53,6 +53,7 @@ public class JsonManager
         else
         {
             gameData = new SaveDataClass();
+            SaveJson(gameData);
         }
         return gameData;
     }
