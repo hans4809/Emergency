@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Player : MonoBehaviour
 {
@@ -48,9 +49,14 @@ public class Player : MonoBehaviour
         if (transform.position.x <= -4.5f) x = -4.5f;
         if (transform.position.x >= 4.5f) x = 4.5f;
         if (transform.position.y <= 10) y = 10;
-        if (transform.position.y >= 110) y = 110;
+        if (transform.position.y >= 230) y = 230;
 
         Camera.main.transform.position = new Vector3(x, y, -10);
+    }
+
+    void SortPlayer()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = (int)((240 - transform.position.y) * 4);
     }
 
     #endregion
@@ -58,6 +64,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         PlayerAction += CameraSet;
+        PlayerAction += SortPlayer;
     }
 
     void Update()
