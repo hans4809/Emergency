@@ -14,7 +14,7 @@ public class SoundManager
 
     public void Init()
     {
-        audioMixer = Resources.Load<AudioMixer>("AudioMixer/SoundSetting");
+        audioMixer = Resources.Load<AudioMixer>("Sounds/SoundSetting");
         GameObject root = GameObject.Find("@Sound");
         if (root == null)
         {
@@ -58,7 +58,6 @@ public class SoundManager
     }
     public void PlayDelayed(AudioClip audioClip, float delay, Define.Sound type = Define.Sound.BGM, float pitch = 1.0f)
     {
-        audioMixer = Managers.Resource.Load<AudioMixer>("AudioMixer/SoundSetting");
         if (audioClip == null)
         {
             return;

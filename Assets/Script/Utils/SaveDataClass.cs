@@ -14,15 +14,29 @@ public class SaveDataClass
         InGameData = new InGameData();
     }
 
-    public SaveDataClass(InGameData InGameData)
+    public SaveDataClass(InGameData InGameData, SoundData soundData)
     {
         this.InGameData = InGameData;
     }
 }
 
+public class SoundData
+{
+    public float masterVolume;
+    public SoundData()
+    {
+        this.masterVolume = 0.5f;
+    }
+    public SoundData(float masterVolume)
+    {
+        this.masterVolume = masterVolume;
+
+    }
+}
+
 public class InGameData
 {
-    public int Level; // 1, 2, 3 ( ÀÌÁö ³ë¸» ÇÏµå )
+    public int Level; // 1, 2, 3 ( ï¿½ï¿½ï¿½ï¿½ ï¿½ë¸» ï¿½Ïµï¿½ )
 
     public InGameData()
     {
@@ -34,4 +48,3 @@ public class InGameData
         this.Level = Level;
     }
 }
-
