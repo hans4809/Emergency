@@ -38,7 +38,6 @@ public class UI_Clear : UI_Popup
         }
 
         yield return new WaitForSeconds(1f);
-        Managers.Sound.Stop(Managers.Sound._audioSources[(int)Define.Sound.BGM]);
         Managers.Scene.LoadScene(Define.Scene.Main);
     }
 }
