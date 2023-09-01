@@ -11,7 +11,6 @@ public class UI_GamePause : UI_Popup
     public enum Buttons
     {
         Resume,
-        Quit,
         Main
     }
     public enum Sliders
@@ -34,7 +33,6 @@ public class UI_GamePause : UI_Popup
         Bind<Button>(typeof(Buttons));
         Bind<GameObject>(typeof(GameObjects));
         GetButton((int)Buttons.Resume).gameObject.AddUIEvent(ResumeClicked);
-        GetButton((int)Buttons.Quit).gameObject.AddUIEvent(QuitClicked);
         GetButton((int)Buttons.Main).gameObject.AddUIEvent(MainClicked);
         MasterSlider = Get<GameObject>((int)GameObjects.MasterSlider).GetComponent<Slider>();
         MasterSlider.gameObject.AddUIEvent(BGMVolume, Define.UIEvent.Drag);
@@ -46,12 +44,6 @@ public class UI_GamePause : UI_Popup
     {
         Time.timeScale = 1;
         ClosePopUPUI();
-    }
-    public void QuitClicked(PointerEventData eventData) 
-    {
-        Time.timeScale = 1;
-        DataManager.Single.GameToSelect = true;
-        Managers.Scene.LoadScene(Define.Scene.Main);
     }
     public void MainClicked(PointerEventData eventData)
     {
