@@ -34,8 +34,6 @@ public class Map : MonoBehaviour
 
     void Start()
     {
-        DataManager.Single.Data.InGameData.Level = 3;
-
         player = GameObject.Find("Player");
         if (DataManager.Single.Data.InGameData.Level == 1)
         {
