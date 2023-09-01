@@ -52,6 +52,9 @@ public class InGameData
         JoysticSize = 1.0f;
         Time = 0.0f;
         IsClear = false;
+        Score1 = 0.0f;
+        Score2 = 0.0f;
+        Score3 = 0.0f;
     }
 
     public InGameData(int Level, float JoysticSize, float Time, bool IsClear)

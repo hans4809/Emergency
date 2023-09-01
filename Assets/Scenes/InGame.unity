@@ -1707,6 +1707,7 @@ MonoBehaviour:
   joystick: {fileID: 0}
   rigidbody: {fileID: 0}
   moveVec: {x: 0, y: 0}
+  speed: 125
 --- !u!1 &1577203413
 GameObject:
   m_ObjectHideFlags: 0

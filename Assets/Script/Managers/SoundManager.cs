@@ -71,6 +71,7 @@ public class SoundManager
             }
             audioSource.pitch = pitch;
             audioSource.clip = audioClip;
+            audioSource.loop = true;
             //audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("BGM")[0];
             audioSource.PlayDelayed(delay);
         }

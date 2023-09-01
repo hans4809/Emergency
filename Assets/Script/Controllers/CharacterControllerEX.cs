@@ -10,7 +10,7 @@ public class CharacterControllerEX : BaseController
     [SerializeField] Vector2 moveVec;
     float x;
     float y;
-    [SerializeField]float speed = 15;
+    [SerializeField] public float speed;
     public Rigidbody2D Rigidbody { get => rigidbody; set => rigidbody = value; }
     // Start is called before the first frame update
     void Start()

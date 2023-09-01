@@ -22,6 +22,7 @@ public class UI_InGame : UI_Scene
     [SerializeField]Image Timer;
     public float currentTime = 0f;
     [SerializeField] UI_Ending uI_Ending;
+    [SerializeField] CharacterControllerEX characterController;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +51,7 @@ public class UI_InGame : UI_Scene
                 break;
         }
         TimerText.text = $"{Math.Round(currentTime, 1)}";
+        characterController = FindObjectOfType<CharacterControllerEX>();
     }
 
     private void PauseClicked(PointerEventData data)
@@ -79,19 +81,19 @@ public class UI_InGame : UI_Scene
                 switch (DataManager.Single.Data.InGameData.Level)
                 {
                     case 1:
-                        if(DataManager.Single.Data.InGameData.Score1 > 60)
+                        if(DataManager.Single.Data.InGameData.Score1 > 60 || DataManager.Single.Data.InGameData.Score1 == 0)
                         {
                             DataManager.Single.Data.InGameData.Score1 = 60;
                         }
                         break;
                     case 2:
-                        if (DataManager.Single.Data.InGameData.Score2 > 60)
+                        if (DataManager.Single.Data.InGameData.Score2 > 60 || DataManager.Single.Data.InGameData.Score2 == 0)
                         {
                             DataManager.Single.Data.InGameData.Score2 = 60;
                         }
                         break;
                     case 3:
-                        if (DataManager.Single.Data.InGameData.Score3 > 60)
+                        if (DataManager.Single.Data.InGameData.Score3 > 60 || DataManager.Single.Data.InGameData.Score3 == 0)
                         {
                             DataManager.Single.Data.InGameData.Score3 = 60;
                         }
@@ -100,6 +102,7 @@ public class UI_InGame : UI_Scene
                 DataManager.Single.Save();
                 Managers.Sound.Stop(Managers.Sound._audioSources[(int)Define.Sound.BGM]);
                 Managers.Sound.Play("Sounds/SFX/GameOver_Edit");
+                characterController.speed = 0;
                 uI_Ending = Managers.UI.ShowPopUpUI<UI_Ending>();
             }
         }

@@ -111,25 +111,25 @@ public class Player : MonoBehaviour
             if(UI_Clear == null)
             {
                 DataManager.Single.Data.InGameData.IsClear = true;
-                _panel.SetActive(true);
-
+                //_panel.SetActive(true);
+                this.GetComponent<CharacterControllerEX>().speed = 0;
                 StartCoroutine(playerMove());
                 switch (DataManager.Single.Data.InGameData.Level)
                 {
                     case 1:
-                        if(DataManager.Single.Data.InGameData.Score1 > UI_InGame.currentTime)
+                        if(DataManager.Single.Data.InGameData.Score1 > UI_InGame.currentTime || DataManager.Single.Data.InGameData.Score1 == 0)
                         {
                             DataManager.Single.Data.InGameData.Score1 = UI_InGame.currentTime;
                         }
                         break;
                     case 2:
-                        if (DataManager.Single.Data.InGameData.Score2 > UI_InGame.currentTime)
+                        if (DataManager.Single.Data.InGameData.Score2 > UI_InGame.currentTime || DataManager.Single.Data.InGameData.Score2 == 0)
                         {
                             DataManager.Single.Data.InGameData.Score2 = UI_InGame.currentTime;
                         }
                         break;
                     case 3:
-                        if (DataManager.Single.Data.InGameData.Score3 > UI_InGame.currentTime)
+                        if (DataManager.Single.Data.InGameData.Score3 > UI_InGame.currentTime || DataManager.Single.Data.InGameData.Score3 == 0)
                         {
                             DataManager.Single.Data.InGameData.Score3 = UI_InGame.currentTime;
                         }
