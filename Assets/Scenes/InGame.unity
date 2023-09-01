@@ -595,7 +595,7 @@ MonoBehaviour:
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_ForceModuleActive: 1
 --- !u!114 &425730057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1033,6 +1033,7 @@ GameObject:
   - component: {fileID: 1299222915}
   - component: {fileID: 1299222914}
   - component: {fileID: 1299222913}
+  - component: {fileID: 1299222916}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1105,6 +1106,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1299222916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299222912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &1461703840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,6 +1724,9 @@ MonoBehaviour:
       JoysticSize: 1
       Time: 0
       IsClear: 0
+      Score1: 0
+      Score2: 0
+      Score3: 0
   SoundData:
     masterVolume: 1
   GameToSelect: 0
@@ -2182,3 +2202,45 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 771e837f2f6ff8143bf01012c769a2f9, type: 3}
+--- !u!1 &6251910811342942612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3050758977284398759, guid: 771e837f2f6ff8143bf01012c769a2f9, type: 3}
+  m_PrefabInstance: {fileID: 6251910811342942611}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6251910811342942613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1730730537908796517, guid: 771e837f2f6ff8143bf01012c769a2f9, type: 3}
+  m_PrefabInstance: {fileID: 6251910811342942611}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &6251910811342942614
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251910811342942612}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!58 &6251910811342942615
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251910811342942613}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

@@ -32,11 +32,14 @@ public class UI_Ending : UI_Popup
         float fadeCount = 1;
         while (fadeCount >= 0.0f)
         {
-            fadeCount -= 0.01f;
-            yield return new WaitForSeconds(0.01f);
+            fadeCount -= 0.001f;
+            yield return new WaitForSeconds(0.003f);
             color.a = fadeCount;
             BackGround.color = color;
         }
+
+        yield return new WaitForSeconds(1f);
+
         Managers.Scene.LoadScene(Define.Scene.Main);
     }        // Update is called once per frame
     void Update()
