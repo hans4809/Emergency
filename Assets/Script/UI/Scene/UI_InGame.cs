@@ -54,6 +54,7 @@ public class UI_InGame : UI_Scene
     private void PauseClicked(PointerEventData data)
     {
         Time.timeScale = 0f;
+        Managers.Sound._audioSources[(int)Define.Sound.BGM].Pause();
         Managers.UI.ShowPopUpUI<UI_GamePause>();
     }
 

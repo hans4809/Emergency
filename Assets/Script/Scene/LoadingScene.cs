@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Main : BaseScene
+public class LoadingScene : BaseScene
 {
     public override void Clear()
     {
     }
+
+    // Start is called before the first frame update
     protected override void Init()
     {
         base.Init();
-        SceneType = Define.Scene.Main;
-        Managers.Sound.Play("Sounds/SFX/Start_Voice_3");
-        Managers.Sound.PlayDelayed("Sounds/BGM/MainBGM", 2.3f, Define.Sound.BGM);
-        Managers.UI.ShowSceneUI<UI_Main>();
+        SceneType = Define.Scene.LoadingScene;
+        Managers.UI.ShowSceneUI<UI_Loading>();
     }
+
     // Update is called once per frame
     void Update()
     {

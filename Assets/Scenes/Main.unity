@@ -533,6 +533,9 @@ MonoBehaviour:
       JoysticSize: 1
       Time: 0
       IsClear: 0
+      Score1: 0
+      Score2: 0
+      Score3: 0
   SoundData:
     masterVolume: 1
   GameToSelect: 0

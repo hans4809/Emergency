@@ -35,7 +35,8 @@ public class Define
     {
         Unknown,
         Main,
-        InGame
+        InGame,
+        LoadingScene
     }
     public enum Sound
     {

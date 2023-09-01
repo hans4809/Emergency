@@ -37,15 +37,17 @@ public class UI_GamePause : UI_Popup
         JoyStickSlider = Get<GameObject>((int)GameObjects.JoyStickSlider).GetComponent<Slider>();
         GetButton((int)Buttons.Resume).gameObject.AddUIEvent(ResumeClicked);
         GetButton((int)Buttons.Main).gameObject.AddUIEvent(MainClicked);
-        MasterSlider = Get<GameObject>((int)GameObjects.MasterSlider).GetComponent<Slider>();
         MasterSlider.gameObject.AddUIEvent(BGMVolume, Define.UIEvent.Drag);
         MasterSlider.value = DataManager.Single.SoundData.masterVolume;
         Managers.Sound.audioMixer.SetFloat("Master", Mathf.Log10(MasterSlider.value) * 20);
+        JoyStickSlider.gameObject.AddUIEvent(JoyStickSize, Define.UIEvent.Drag);
+        JoyStickSlider.value = DataManager.Single.Data.InGameData.JoysticSize;
         VolumeText.text = $"{Math.Round(MasterSlider.value, 2) * 100}%";
         JoyStickText.text = $"{Math.Round(JoyStickSlider.value, 2) * 100}%";
     }
     public void ResumeClicked(PointerEventData eventData)
     {
+        Managers.Sound._audioSources[(int)Define.Sound.BGM].UnPause();
         GameObject.Find("UI_Joystick").GetComponent<UI_Joystick>().SetJoystickSize();
         Time.timeScale = 1;
         ClosePopUPUI();
