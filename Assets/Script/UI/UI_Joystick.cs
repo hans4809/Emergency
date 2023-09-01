@@ -59,7 +59,6 @@ public class UI_Joystick : UI_Scene
         speed = 0;
 
         GetButton((int)Buttons.joystick).gameObject.transform.localPosition = new Vector3(0f, 0f, 0f);
-
         player.MoveEnd();
     }
 
